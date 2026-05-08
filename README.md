@@ -1,0 +1,1 @@
+# Paradigmas_da_tecnologia
