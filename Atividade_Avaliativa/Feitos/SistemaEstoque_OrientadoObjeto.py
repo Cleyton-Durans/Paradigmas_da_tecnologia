@@ -1,3 +1,9 @@
+# Sistema de Gerenciamento de Estoque Orientado a Objetos
+# Este código implementa um sistema de gerenciamento de estoque utilizando o paradigma de programação orientada a objetos. 
+# Ele define classes para representar produtos e o estoque, 
+# permitindo cadastrar produtos, atualizar o estoque, calcular valores totais e identificar produtos mais caros ou baratos.
+
+#Class Produto representa um produto no estoque.
 class Produto:  
     def __init__(self, nome, quantidade, preco):    
         self.nome = nome
@@ -6,7 +12,8 @@ class Produto:
 
     def __repr__(self):
         return f"Produto(nome :'{self.nome}', quantidade :{self.quantidade}, preco : R${self.preco})"
-
+    
+    # Encapsulamento dos atributos com propriedades para garantir a integridade dos dados.
     @property
     def nome(self):
         return self._nome
@@ -58,7 +65,9 @@ class ProdutoPerecivel(Produto):
 class Estoque:
     def __init__(self):
         self.produtos = []
-
+    # Cadastrar um novo produto no estoque utilizando a classe Produto
+    # Try e except para capturar erros de entrada e garantir que os dados sejam válidos.
+    # Método verifica se o produto já existe no estoque antes de adicioná-lo.
     def cadastrar_produto(self, nome, quantidade, preco):
         try:
             for p in self.produtos:
@@ -69,7 +78,8 @@ class Estoque:
             self.produtos.append(produto)
             print(f"Produto '{nome}' cadastrado com sucesso!")
         except ValueError as e: print(f"Erro ao cadastrar produto: {e}")
-        
+    # Método para atualizar o estoque, seja para venda ou reposição.
+    # try e except para capturar erros de entrada e garantir que os dados sejam válidos.    
     def atualizar_estoque(self, nome, quantidade, operacao="venda"):
         try:
             if not isinstance(quantidade, int) or quantidade < 0:
@@ -119,7 +129,8 @@ class Estoque:
                 print(f"Valor individual de '{produto.nome}': R${produto.preco:.2f}")
                 return
         print(f"Produto '{nome}' não encontrado.")
-
+# Função menu para interação com o usuário, permitindo cadastrar produtos, atualizar estoque, calcular valores e listar produtos.
+# A função utiliza um loop while para manter o menu ativo até que o usuário decida sair.
 def menu(): 
     estoque = Estoque() 
     
