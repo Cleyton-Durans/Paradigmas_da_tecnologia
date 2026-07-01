@@ -1,8 +1,5 @@
 class Produto:  
-    def __init__(self, nome, quantidade, preco):
-        self._nome = None 
-        self._quantidade = None
-        self._preco = None
+    def __init__(self, nome, quantidade, preco):    
         self.nome = nome
         self.quantidade = quantidade  
         self.preco = preco    
@@ -122,8 +119,7 @@ class Estoque:
                 print(f"Valor individual de '{produto.nome}': R${produto.preco:.2f}")
                 return
         print(f"Produto '{nome}' não encontrado.")
-                
-# --- Menu Interativo ---
+
 def menu(): 
     estoque = Estoque() 
     
@@ -185,3 +181,6 @@ def menu():
 
         except ValueError as e:
             print(f"Erro de entrada: {e}. Por favor, insira valores válidos.")
+            
+if __name__ == "__main__":
+    menu()
